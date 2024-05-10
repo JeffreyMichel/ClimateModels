@@ -8,7 +8,6 @@ Welcome to the Climate Models repository! This collection of climate models was 
 2. [Usage](#usage)
 3. [Models](#models)
 4. [Contributing](#contributing)
-5. [License](#license)
 
 ## Introduction
 
@@ -18,11 +17,8 @@ Climate models are essential tools for understanding the Earth's climate system 
 
 To use the climate models in this repository, follow these steps:
 
-1. Clone the repository to your local machine:
-##git clone https://github.com/yourusername/climate-models.git
-
+1. Clone the repository to your local machine (git clone https://github.com/yourusername/climate-models.git)
 2. Navigate to the directory containing the desired model.
-
 3. Follow the instructions provided in the model's README file to run the simulation and analyze the results.
 
 ## Models
@@ -53,7 +49,3 @@ We welcome contributions from the community to enhance the functionality and acc
 - Create a new branch for your feature or bug fix.
 - Make your changes and ensure that the code passes all tests.
 - Submit a pull request detailing your changes and the problem they solve.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
