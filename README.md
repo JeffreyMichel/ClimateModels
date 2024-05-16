@@ -23,23 +23,12 @@ To use the climate models in this repository, follow these steps:
 
 ## Models
 
-### 1. Atmospheric Circulation Model
+### 1. Pane of Glass model
 
-- **Description:** This model simulates the global atmospheric circulation patterns using simplified equations of motion.
-- **Features:** Includes options to visualize wind patterns, pressure systems, and precipitation distribution.
+- **Description:** This model simulates the global atmospheric temperature assuming that the atmosphere is the same as a pane of glass, emitting in two directions: up and down.
+- **Features:** Produces a graph to demostrate equilibrium time frame as well as outputting the equlibrium temperature.
 - **Dependencies:** Requires Python 3 and Matplotlib library.
 
-### 2. Ocean Dynamics Model
-
-- **Description:** This model simulates the movement of ocean currents and the distribution of heat in the ocean.
-- **Features:** Allows users to explore the effects of factors such as temperature gradients and oceanic topography.
-- **Dependencies:** Requires MATLAB or Python with NumPy library.
-
-### 3. Carbon Cycle Model
-
-- **Description:** This model simulates the flow of carbon between the atmosphere, oceans, and terrestrial ecosystems.
-- **Features:** Includes options to adjust carbon emissions, land use changes, and carbon sequestration rates.
-- **Dependencies:** Requires Python 3 and Pandas library.
 
 ## Contributing
 
