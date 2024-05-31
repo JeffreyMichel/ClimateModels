@@ -19,6 +19,9 @@ reaction_time = 20 # amount of years it takes to reach equlibrium temperature
 run = 0 #to see if we have already run the inner loop
 initial_T = 0 # starting temp so we see relative differences instead of overall T
 T_BAU = initial_T
+stop_amount = 400 #co_2 ppm where we stop emitting
+ocean_uptake_time = 100 # years
+
 
 A = 0.0225 #A is a tunable growth rate parameter equal to a value of 0.0225 / year, gives an atmospheric rise rate of 2.5 ppm when the pCO2 value is 400 ppm; a reasonable fit to the current pCO2 value and rate of rise. 
 B = current_masking_effect / current_co2_change # a constant that estimates the masking chemicals based on the amount of industrial gas release. This assumes that co2 and other chemicals are released in tandem
@@ -34,9 +37,9 @@ T_NH_list = []
 
 # loop to adjust CO2 over time per year and determine impact
 for i in timeframe:
-
+    
     #business as usual carbon dioxide release (equation from class)
-    co2ppmBAU = natural_carbon + (last_carbon_amount - natural_carbon) * (1 + A/timestep)
+    co2ppmBAU = natural_carbon + (last_carbon_amount - natural_carbon) * (1 + A/timestep) 
     
     # radiative forcing for the Co2 from BAU (equation from class). Second term represents the number of doublings over natural co2
     rf_from_co2_BAU = 4 * np.log(co2ppmBAU/natural_carbon)/np.log(2) # the 4 is in W/m^2
@@ -49,7 +52,7 @@ for i in timeframe:
     # temperature equilibrium 
     T_eql_BAU = temp_sensitivity * RF_BAU / 4 # 4 W/m^2 is the amount of increase that corresponds to a co2_doubling
     
-    #calculate current temp assuming temp reaches equlibrium after 100 years
+    #calculate current temp assuming temp reaches equlibrium after some reaction time of the atmosphere in years
     delta_T = (T_eql_BAU - T_BAU) / (reaction_time * timestep)
     T_BAU = T_BAU + delta_T
     # maintain list for plotting
@@ -58,11 +61,11 @@ for i in timeframe:
     
 
     #to calculate a future where humans teleport away, make humans disappear as soon as we hit 400 ppm
-    if run==0 and co2ppmBAU >= 400:
+    if run==0 and co2ppmBAU >= stop_amount:
         run = 1 #make suire this isn't run twice
         last_carbon_amount_NH = co2ppmBAU # amount of carbon ppm once humans have gone away
         # calculate different co2 change per year
-        delta_co2 = (340 - co2ppmBAU) * 0.01 * timestep # this assumes a ocean CO2 absorption timeframe timeframe of 100 years
+        delta_co2 = (340 - co2ppmBAU) * timestep / ocean_uptake_time
         T_NH = T_BAU # starting temp is the same
         T_NH_list = temp_list.copy()
         co2ppm_noHumans_list = co2ppmBAU_list.copy()
